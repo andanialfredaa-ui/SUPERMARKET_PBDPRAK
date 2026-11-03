@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/lib.php';
+require __DIR__ . '/layout.php';
 csrf_check();
 
 if (user()) {
@@ -34,12 +35,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Masuk - <?= e(NAMA_TOKO) ?></title>
 <link rel="stylesheet" href="assets/style.css">
+<script src="assets/app.js" defer></script>
 </head>
 <body>
+<?php render_decor(true); ?>
 <div class="loginbox">
   <div class="card">
-    <h1>&#128722; <?= e(NAMA_TOKO) ?></h1>
-    <p class="hint">Sistem Informasi Supermarket</p>
+    <div style="text-align:center">
+      <span class="dotted ink logo"><?= e(NAMA_TOKO) ?></span>
+      <span class="tag">supermarket &#9829;</span>
+    </div>
     <?php if ($error): ?><div class="alert err"><?= e($error) ?></div><?php endif; ?>
     <form method="post" autocomplete="off">
       <?= csrf_field() ?>
@@ -47,9 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <input type="text" id="username" name="username" required autofocus>
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required>
-      <p><button class="btn" style="width:100%;margin-top:14px">Masuk</button></p>
+      <p><button class="btn" style="width:100%;margin-top:16px;padding:13px">Masuk</button></p>
     </form>
     <p class="hint">Akun contoh: <b>admin / admin123</b> (semua menu) dan <b>kasir / kasir123</b> (kasir dan kartu stok).</p>
+    <?php render_stars(); ?>
   </div>
 </div>
 </body>

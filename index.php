@@ -26,9 +26,9 @@ $terakhir = $pdo->query(
 render_header('Dashboard', 'dashboard');
 ?>
 <div class="grid">
-  <div class="stat"><div class="n"><?= angka($jmlBarang) ?></div><div class="l">Barang aktif</div></div>
-  <div class="stat"><div class="n"><?= angka($jmlVendor) ?></div><div class="l">Vendor aktif</div></div>
-  <div class="stat"><div class="n"><?= rupiah($hariIni['t']) ?></div><div class="l">Penjualan hari ini (<?= angka($hariIni['n']) ?> transaksi)</div></div>
+  <div class="stat"><div class="n" data-count="<?= (int) $jmlBarang ?>"><?= angka($jmlBarang) ?></div><div class="l">Barang aktif</div></div>
+  <div class="stat"><div class="n" data-count="<?= (int) $jmlVendor ?>"><?= angka($jmlVendor) ?></div><div class="l">Vendor aktif</div></div>
+  <div class="stat"><div class="n" data-count="<?= (int) $hariIni['t'] ?>" data-prefix="Rp "><?= rupiah($hariIni['t']) ?></div><div class="l">Penjualan hari ini (<?= angka($hariIni['n']) ?> transaksi)</div></div>
   <div class="stat"><div class="n"><?= $margin ? e($margin['persen']) . '%' : '-' ?></div><div class="l">Margin penjualan aktif</div></div>
 </div>
 

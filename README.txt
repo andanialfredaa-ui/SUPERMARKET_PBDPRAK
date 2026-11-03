@@ -41,3 +41,11 @@ STRUKTUR FILE
   nota.php        struk
   kartu_stok.php  kartu stok
   assets/style.css
+
+TAMPILAN (tema pink polka)
+  Font disimpan lokal di assets/fonts (tidak butuh internet):
+    Pinyon Script (judul dan logo), Syncopate (label huruf lebar), DM Sans (teks).
+  Warna dan font bisa diubah di bagian :root pada assets/style.css.
+  Animasi: titik polka melayang, bintang berkelip, pita berjalan, angka dashboard
+  menghitung naik, percikan bintang saat klik tombol. Otomatis mati jika
+  pengaturan "kurangi animasi" di komputer aktif.
