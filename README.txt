@@ -39,7 +39,10 @@ STRUKTUR FILE
   master.php      CRUD 6 data master (satu file untuk semua master)
   kasir.php       transaksi penjualan
   nota.php        struk
+<<<<<<< HEAD
   penerimaan.php  tambah stok / penerimaan barang
+=======
+>>>>>>> a6735c9e4901add495a1f14cc63b8bc56d26ab18
   kartu_stok.php  kartu stok
   assets/style.css
 

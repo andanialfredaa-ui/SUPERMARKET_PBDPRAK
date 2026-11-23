@@ -12,7 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $st = db()->prepare(
         "SELECT u.iduser, u.username, r.nama_role
            FROM `user` u JOIN role r ON r.idrole = u.idrole
+<<<<<<< HEAD
           WHERE u.username = ? AND u.password = SHA2(?, 256) AND u.status = 1"
+=======
+          WHERE u.username = ? AND u.password = SHA2(?, 256)"
+>>>>>>> a6735c9e4901add495a1f14cc63b8bc56d26ab18
     );
     $st->execute([trim($_POST['username'] ?? ''), $_POST['password'] ?? '']);
     $row = $st->fetch();

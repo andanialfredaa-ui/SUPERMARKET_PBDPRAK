@@ -43,7 +43,10 @@ $M = [
         'title' => 'Role', 'table' => 'role', 'view' => 'v_role', 'pk' => 'idrole',
         'fields' => [
             ['name' => 'nama_role', 'label' => 'Nama role', 'type' => 'text', 'max' => 100, 'unique' => true],
+<<<<<<< HEAD
             ['name' => 'status', 'label' => 'Status', 'type' => 'select', 'options' => $AKTIF],
+=======
+>>>>>>> a6735c9e4901add495a1f14cc63b8bc56d26ab18
         ],
         'hint' => 'Role "Admin" bisa membuka semua menu. Role lain hanya kasir dan kartu stok.',
     ],
@@ -52,8 +55,12 @@ $M = [
         'fields' => [
             ['name' => 'username', 'label' => 'Username', 'type' => 'text', 'max' => 45, 'unique' => true],
             ['name' => 'password', 'label' => 'Password', 'type' => 'password'],
+<<<<<<< HEAD
             ['name' => 'idrole', 'label' => 'Role', 'type' => 'select', 'sql' => 'SELECT idrole, nama_role FROM role WHERE status = 1 ORDER BY nama_role'],
             ['name' => 'status', 'label' => 'Status', 'type' => 'select', 'options' => $AKTIF],
+=======
+            ['name' => 'idrole', 'label' => 'Role', 'type' => 'select', 'sql' => 'SELECT idrole, nama_role FROM role ORDER BY nama_role'],
+>>>>>>> a6735c9e4901add495a1f14cc63b8bc56d26ab18
         ],
     ],
     'margin' => [
@@ -265,6 +272,7 @@ if ($act === 'form') {
     exit;
 }
 
+<<<<<<< HEAD
 // ---- daftar (dibaca dari VIEW: semua / _aktif / _nonaktif) ----
 $stFilter = $_GET['st'] ?? 'all';
 $targetView = $c['view'];
@@ -274,6 +282,10 @@ if ($stFilter === 'aktif') {
     $targetView = $c['view'] . '_nonaktif';
 }
 $st = $pdo->query("SELECT * FROM `{$targetView}` ORDER BY `$pk`");
+=======
+// ---- daftar (dibaca dari VIEW) ----
+$st = $pdo->query("SELECT * FROM `{$c['view']}` ORDER BY `$pk`");
+>>>>>>> a6735c9e4901add495a1f14cc63b8bc56d26ab18
 $colNames = [];
 for ($i = 0; $i < $st->columnCount(); $i++) {
     $colNames[] = $st->getColumnMeta($i)['name'];
@@ -281,12 +293,16 @@ for ($i = 0; $i < $st->columnCount(); $i++) {
 $rows = $st->fetchAll();
 ?>
 <div class="toolbar">
+<<<<<<< HEAD
   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
     <input type="text" id="cari" placeholder="Cari data..." oninput="cariData(this.value)">
     <a class="btn small <?= $stFilter === 'all' ? '' : 'light' ?>" href="<?= e($self) ?>">Semua</a>
     <a class="btn small <?= $stFilter === 'aktif' ? '' : 'light' ?>" href="<?= e($self) ?>&st=aktif">Aktif</a>
     <a class="btn small <?= $stFilter === 'nonaktif' ? '' : 'light' ?>" href="<?= e($self) ?>&st=nonaktif">Nonaktif</a>
   </div>
+=======
+  <input type="text" id="cari" placeholder="Cari data..." oninput="cariData(this.value)">
+>>>>>>> a6735c9e4901add495a1f14cc63b8bc56d26ab18
   <a class="btn" href="<?= e($self) ?>&act=form">+ Tambah <?= e($c['title']) ?></a>
 </div>
 <?php if (!empty($c['hint'])): ?><p class="hint" style="margin:-6px 0 12px"><?= e($c['hint']) ?></p><?php endif; ?>

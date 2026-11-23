@@ -46,9 +46,12 @@ function render_header(string $title, string $active = ''): void
       <div class="sec">Menu</div>
       <a href="index.php"<?= $cls('dashboard') ?>>Dashboard</a>
       <a href="kasir.php"<?= $cls('kasir') ?>>Kasir</a>
+<<<<<<< HEAD
       <a href="pengadaan.php"<?= $cls('pengadaan') ?>>Pengadaan</a>
       <a href="penerimaan.php"<?= $cls('penerimaan') ?>>Penerimaan Stok</a>
       <a href="retur.php"<?= $cls('retur') ?>>Retur Vendor</a>
+=======
+>>>>>>> a6735c9e4901add495a1f14cc63b8bc56d26ab18
       <a href="kartu_stok.php"<?= $cls('kartu_stok') ?>>Kartu Stok</a>
       <?php if (is_admin()): ?>
         <div class="sec">Data Master</div>

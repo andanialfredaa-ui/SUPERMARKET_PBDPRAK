@@ -85,6 +85,12 @@ function csrf_check(): void
 
 function stok_sql(): string
 {
+<<<<<<< HEAD
     // menggunakan function database fn_stok_barang(idbarang)
     return "fn_stok_barang(b.idbarang)";
+=======
+    // stok terakhir sebuah barang = baris terakhir pada kartu_stok
+    return "IFNULL((SELECT k.stock FROM kartu_stok k WHERE k.idbarang = b.idbarang
+                    ORDER BY k.idkartu_stok DESC LIMIT 1), 0)";
+>>>>>>> a6735c9e4901add495a1f14cc63b8bc56d26ab18
 }

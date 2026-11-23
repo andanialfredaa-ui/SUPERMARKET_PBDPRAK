@@ -39,7 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             throw new RuntimeException('Ada barang yang tidak ditemukan.');
         }
 
+<<<<<<< HEAD
         $cekStok = $pdo->prepare("SELECT fn_stok_barang(?)");
+=======
+        $cekStok = $pdo->prepare("SELECT IFNULL((SELECT stock FROM kartu_stok WHERE idbarang = ? ORDER BY idkartu_stok DESC LIMIT 1), 0)");
+>>>>>>> a6735c9e4901add495a1f14cc63b8bc56d26ab18
         $lines = [];
         $sub = 0;
         foreach ($cart as $id => $q) {
@@ -52,11 +56,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($q > $stok) {
                 throw new RuntimeException("Stok {$b['nama']} tidak cukup (sisa $stok).");
             }
+<<<<<<< HEAD
             $stHj = $pdo->prepare("SELECT fn_harga_jual(?)"); $stHj->execute([$id]); $hj = (int) $stHj->fetchColumn();
             $lines[] = [$id, $hj, $q, $hj * $q];
             $sub += $hj * $q;
         }
         $stPpn = $pdo->prepare("SELECT fn_hitung_ppn(?)"); $stPpn->execute([$sub]); $ppn = (int) $stPpn->fetchColumn();
+=======
+            $hj = (int) round($b['harga'] * (100 + $margin['persen']) / 100);
+            $lines[] = [$id, $hj, $q, $hj * $q];
+            $sub += $hj * $q;
+        }
+        $ppn   = (int) round($sub * PPN_PERSEN / 100);
+>>>>>>> a6735c9e4901add495a1f14cc63b8bc56d26ab18
         $total = $sub + $ppn;
 
         $pdo->prepare("INSERT INTO penjualan (subtotal_nilai, ppn, total_nilai, iduser, idmargin_penjualan) VALUES (?,?,?,?,?)")
